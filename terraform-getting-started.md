@@ -1,12 +1,30 @@
 # Getting Started with Terraform
+Terraform is the most popular language for defining and provisioning Infrastructure as Code (IaC). This step-by-step tutorial was designed to get you started quickly with Terraform.
 
-Terraform is the most popular langauge for defining and provisioning infrastructure as code (IaC).
+After completing this tutorial, you should be able to:
+- Execute the steps to install Terraform
+- Describe what happens in the Create, Manage, and Destroy phases of Terraform and be able to give an example
 
-To install Terraform, simply visit [Terraform.io](https://www.terraform.io/downloads.html) and download the compressed binary application executable file deliverable for your platform, machine or environment on which you like to run code and do development.
+## Prerequisites
+- Basic terminal skills
+- Basic understanding of Infrastructure as Code - [What is Infrastructure as Code with Terraform?](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/infrastructure-as-code)
+- To get the most out of this tutorial, you should be familiar with Terraform - [What is Terraform?](https://developer.hashicorp.com/terraform/intro)
 
-With Terraform installed, let's dive right into it and start creating some infrastructure.
+## Install 
+To install Terraform, visit [Install Terraform](https://developer.hashicorp.com/terraform/install) and find the appropriate package for your system.  Download and install or use the appropriate package manager. Follow the installation instructions for your selected installation method.
 
-Most guys find it easiest to create a new directory on there local machine and create Terraform configuration code inside it.
+For the sample code provided, you may need to install Docker. Visit [Docker](https://www.docker.com/) and find the appropriate package for your system. 
+
+Verify Docker is running. 
+
+```shell
+$ docker info
+```
+
+## Create
+In the create phase you configure Terraform to manage your infrastructure.
+
+Create a new directory on your local machine where you will create your Terraform configuration code.
 
 ```shell
 $ mkdir terraform-demo
@@ -19,7 +37,7 @@ Next, create a file for your Terraform configuration code.
 $ touch main.tf
 ```
 
-Paste the following lines into the file.
+Using the editor of your choice, paste the following lines into the file.
 
 ```hcl
 terraform {
@@ -33,7 +51,7 @@ provider "docker" {
     host = "unix:///var/run/docker.sock"
 }
 resource "docker_container" "nginx" {
-  image = docker_image.nginx.latest
+  image = docker_image.nginx.image_id
   name  = "training"
   ports {
     internal = 80
@@ -44,25 +62,37 @@ resource "docker_image" "nginx" {
   name = "nginx:latest"
 }
 ```
+## Manage
+In the manage phase you modify and execute Terraform on your infrastructure. 
 
-Initialize Terraform with the `init` command. The AWS provider will be installed. 
+Initialize Terraform with the `init` command.
 
 ```shell
 $ terraform init
 ```
 
-You shoud check for any errors. If it ran successfully, provision the resource with the `apply` command.
+You should check for any errors. If it ran successfully, provision the resource with the `apply` command.
 
 ```shell
 $ terraform apply
 ```
 
+When prompted to a perform these actions, type `yes` and hit ENTER, else command will not be executed.
+
 The command will take up to a few minutes to run and will display a message indicating that the resource was created.
 
-Finally, destroy the infrastructure.
+## Destroy
+In the destroy phase you destroy the infrastructure you no longer need.
 
 ```shell
 $ terraform destroy
 ```
 
-Look for a message are the bottom of the output asking for confirmation. Type `yes` and hit ENTER. Terraform will destroy the resources it had created earlier.
+Look for a message at the bottom of the output asking for confirmation. Type `yes` and hit ENTER. Terraform will destroy the resources created earlier.
+
+## Next Steps
+In this tutorial you learned how to install Terraform on the platform of your choice. You then used sample code in the **Create** phase to create a Terraform configuration. In the **Manage** phase you initialized and applied your Terraform configuration. Finally, in the **Destroy** phase you destroyed all the resources you created. 
+
+Looking for a more exhaustive tutorial? [Terraform](https://developer.hashicorp.com/terraform)
+
+Interested in Certification? [Infrastructure Automation Certifications](https://developer.hashicorp.com/certifications/infrastructure-automation)
