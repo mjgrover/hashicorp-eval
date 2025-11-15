@@ -1,5 +1,5 @@
 # Getting Started with Terraform
-Terraform is the most popular language for defining and provisioning Infrastructure as Code (IaC). This step by step tutorial was designed to get you started quickly with Terraform.
+Terraform is the most popular language for defining and provisioning Infrastructure as Code (IaC). This step-by-step tutorial was designed to get you started quickly with Terraform.
 
 After completing this tutorial, you should be able to:
 - Execute the steps to install Terraform
@@ -13,7 +13,7 @@ After completing this tutorial, you should be able to:
 ## Install 
 To install Terraform, visit [Install Terraform](https://developer.hashicorp.com/terraform/install) and find the appropriate package for your system.  Download and install or use the appropriate package manager. Follow the installation instructions for your selected installation method.
 
-For the sample code provied, you may need to also install docker. Visit [Docker](https://www.docker.com/) and find the appropriate package for your system. 
+For the sample code provided, you may need to install Docker. Visit [Docker](https://www.docker.com/) and find the appropriate package for your system. 
 
 Verify Docker is running. 
 
@@ -22,7 +22,7 @@ $ docker info
 ```
 
 ## Create
-In the **Create** phase you configure Terraform to manage your infrastructure.
+In the create phase you configure Terraform to manage your infrastructure.
 
 Create a new directory on your local machine where you will create your Terraform configuration code.
 
@@ -63,7 +63,7 @@ resource "docker_image" "nginx" {
 }
 ```
 ## Manage
-In the **Manage** phase, you are able to modify and execute Terraform on your infrasturcture. 
+In the manage phase you modify and execute Terraform on your infrastructure. 
 
 Initialize Terraform with the `init` command.
 
@@ -77,18 +77,18 @@ You should check for any errors. If it ran successfully, provision the resource 
 $ terraform apply
 ```
 
-When prompted to a perform these actions, type 'yes' and hit ENTER, else command will not be executed.
+When prompted to a perform these actions, type `yes` and hit ENTER, else command will not be executed.
 
 The command will take up to a few minutes to run and will display a message indicating that the resource was created.
 
 ## Destroy
-In the **Destory** phase, you can destroy the infrastructure you no longer need.
+In the destroy phase you destroy the infrastructure you no longer need.
 
 ```shell
 $ terraform destroy
 ```
 
-Look for a message are the bottom of the output asking for confirmation. Type `yes` and hit ENTER. Terraform will destroy the resources it had created earlier.
+Look for a message at the bottom of the output asking for confirmation. Type `yes` and hit ENTER. Terraform will destroy the resources created earlier.
 
 ## Next Steps
 In this tutorial you learned how to install Terraform on the platform of your choice. You then used sample code in the **Create** phase to create a Terraform configuration. In the **Manage** phase you initialized and applied your Terraform configuration. Finally, in the **Destroy** phase you destroyed all the resources you created. 
